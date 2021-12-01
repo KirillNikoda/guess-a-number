@@ -16,9 +16,26 @@ type Props = {};
 
 export const StartGameScreen = (props: Props) => {
   const [enteredValue, setEnteredValue] = useState('');
+  const [selectedNumber, setSelectedNumber] = useState(0);
+  const [confirmed, setConfirmed] = useState(false);
 
   const numberInputHandler = (selectedNumber: string) => {
     setEnteredValue(selectedNumber.replace(/[^0-9]/g, ''));
+  };
+
+  const confirmSelectedNumber = () => {
+    const parsedNumber = parseInt(enteredValue);
+    if (isNaN(parsedNumber) || parsedNumber < 1 || parsedNumber > 99) {
+      return;
+    }
+
+    setSelectedNumber(parsedNumber);
+    setConfirmed(true);
+  };
+
+  const resetSelectedNumber = () => {
+    setSelectedNumber(0);
+    setConfirmed(false);
   };
 
   return (
@@ -41,10 +58,21 @@ export const StartGameScreen = (props: Props) => {
             value={enteredValue}
           />
           <View style={styles.buttonContainer}>
-            <Button title='Reset' onPress={() => {}} color={colors.primary} />
-            <Button title='Confirm' onPress={() => {}} color={colors.accent} />
+            <Button
+              title='Reset'
+              onPress={resetSelectedNumber}
+              color={colors.primary}
+            />
+            <Button
+              title='Confirm'
+              onPress={confirmSelectedNumber}
+              color={colors.accent}
+            />
           </View>
         </Card>
+        {confirmed && (
+          <Text style={styles.selectedNumber}>{selectedNumber}</Text>
+        )}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -74,5 +102,8 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     textAlign: 'center',
+  },
+  selectedNumber: {
+    marginTop: 10,
   },
 });
