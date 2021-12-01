@@ -1,8 +1,14 @@
 import React from 'react';
 import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 
-export const Input = (props: any) => {
-  return <TextInput {...props} style={{ ...styles.input, ...props.style }} />;
+export const Input = (props: TextInputProps) => {
+  console.log(props.style);
+  console.log(123);
+  const { style } = props;
+
+  return (
+    <TextInput {...props} style={{ ...styles.input, ...(props.style as {}) }} />
+  );
 };
 
 const styles = StyleSheet.create({

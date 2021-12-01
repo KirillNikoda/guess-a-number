@@ -1,5 +1,13 @@
-import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Button,
+  Keyboard,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { Card } from '../components/Card';
 import { Input } from '../components/Input';
 import { colors } from '../constants/colors';
@@ -7,29 +15,38 @@ import { colors } from '../constants/colors';
 type Props = {};
 
 export const StartGameScreen = (props: Props) => {
+  const [enteredValue, setEnteredValue] = useState('');
+
+  const numberInputHandler = (selectedNumber: string) => {
+    setEnteredValue(selectedNumber.replace(/[^0-9]/g, ''));
+  };
+
   return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>The Game Screen</Text>
-      <Card style={styles.inputContainer}>
-        <Text>Select a number</Text>
-        <Input
-          style={styles.input}
-          blurOnSubmit
-          autoCapitalize='none'
-          autoCorrect={false}
-          keyboardType='number-pad'
-          maxLength={2}
-        />
-        <View style={styles.buttonContainer}>
-          <View>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.screen}>
+        <Text style={styles.title}>The Game Screen</Text>
+        <Card style={styles.inputContainer}>
+          <Text>Select a number</Text>
+          <Input
+            style={styles.input}
+            blurOnSubmit
+            autoCapitalize='none'
+            autoCorrect={false}
+            keyboardType='numbers-and-punctuation'
+            onChangeText={numberInputHandler}
+            value={enteredValue}
+          />
+          <View style={styles.buttonContainer}>
             <Button title='Reset' onPress={() => {}} color={colors.primary} />
-          </View>
-          <View>
             <Button title='Confirm' onPress={() => {}} color={colors.accent} />
           </View>
-        </View>
-      </Card>
-    </View>
+        </Card>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
