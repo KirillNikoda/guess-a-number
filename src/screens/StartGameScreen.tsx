@@ -55,7 +55,7 @@ export const StartGameScreen = ({ onStartGame }: Props) => {
       <View style={styles.screen}>
         <Text style={styles.title}>The Game Screen</Text>
         <Card style={styles.inputContainer}>
-          <Text>Select a number</Text>
+          <Text style={{ fontFamily: 'open-sans-bold' }}>Select a number</Text>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginVertical: 10,
+    fontFamily: 'open-sans-bold',
   },
   buttonContainer: {
     flexDirection: 'row',

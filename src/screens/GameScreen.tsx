@@ -32,6 +32,7 @@ export const GameScreen = ({ userChoice, onGameOver }: Props) => {
   );
 
   const guessRounds = useRef(0);
+
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
 
