@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 type Props = {
   children: React.ReactNode;
-  style?: Record<string, any>;
+  style?: ViewStyle;
 };
 
 export const Card = ({ children, style }: Props) => {

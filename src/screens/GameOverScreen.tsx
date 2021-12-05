@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import { BodyText } from '../components/BodyText';
+import { TitleText } from '../components/TitleText';
 
 type Props = {
   guessRounds: number;
@@ -14,9 +16,9 @@ export const GameOverScreen = ({
 }: Props) => {
   return (
     <View style={styles.screen}>
-      <Text>The Game is over!</Text>
-      <Text>Number of rounds: {guessRounds}</Text>
-      <Text>Number was: {guessedNumber}</Text>
+      <TitleText>The Game is over!</TitleText>
+      <BodyText>Number of rounds: {guessRounds}</BodyText>
+      <BodyText>Number was: {guessedNumber}</BodyText>
       <Button title='NEW GAME' onPress={onStartNewGame} />
     </View>
   );

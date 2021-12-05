@@ -9,9 +9,11 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import { BodyText } from '../components/BodyText';
 import { Card } from '../components/Card';
 import { Input } from '../components/Input';
 import { NumberContainer } from '../components/NumberContainer';
+import { TitleText } from '../components/TitleText';
 import { colors } from '../constants/colors';
 
 type Props = {
@@ -53,9 +55,9 @@ export const StartGameScreen = ({ onStartGame }: Props) => {
       }}
     >
       <View style={styles.screen}>
-        <Text style={styles.title}>The Game Screen</Text>
+        <TitleText>The Game Screen</TitleText>
         <Card style={styles.inputContainer}>
-          <Text style={{ fontFamily: 'open-sans-bold' }}>Select a number</Text>
+          <BodyText>Select a number</BodyText>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -80,7 +82,7 @@ export const StartGameScreen = ({ onStartGame }: Props) => {
         </Card>
         {confirmed && (
           <Card style={styles.summaryContainer}>
-            <Text>You selected</Text>
+            <BodyText>You selected</BodyText>
             <NumberContainer>{selectedNumber}</NumberContainer>
             <Button
               title='START GAME'
