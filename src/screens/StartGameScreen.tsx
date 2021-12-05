@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: '80%',
     alignItems: 'center',
+    marginVertical: 40,
   },
   input: {
     width: '100%',
