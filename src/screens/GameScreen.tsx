@@ -115,9 +115,14 @@ const styles = StyleSheet.create({
     width: 400,
     maxWidth: '90%',
   },
-  guessesList: {
+  guessesListContainer: {
     width: '80%',
     flex: 1,
+  },
+  guessesList: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   guessesListItem: {
     borderColor: '#ccc',
